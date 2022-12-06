@@ -146,6 +146,25 @@ public class practice6_12 {
 		}
 	}
 	
+	@Test
+	public void tc5() throws InterruptedException
+	{
+		List<WebElement> list=rm.findElements(By.tagName("a"));
+		
+		int totalNumber=list.size();
+		
+		System.err.println("Total Number of Links :" +totalNumber);
+		
+		Thread.sleep(3000);
+		
+		for(WebElement link:list)
+		{
+			String Text=link.getText();
+			
+			System.out.println("Link text are as follows :" +Text);
+		}
+	}
+	
 	
 	
 	@AfterMethod
