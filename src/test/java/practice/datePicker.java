@@ -6,9 +6,11 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
@@ -32,11 +34,11 @@ public class datePicker {
 		
 		rm=new ChromeDriver(co);
 				
-		rm.get("https://jqueryui.com/datepicker/");
+		rm.get("https://www.makemytrip.com");
 		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void tc1() throws InterruptedException
 	{
 		Thread.sleep(4000);
@@ -59,6 +61,56 @@ public class datePicker {
 		}
 		
 	}
+	
+	@Test
+	public void tc2() throws InterruptedException
+	{
+		
+	    WebElement Departure=rm.findElement(By.xpath("//*[contains(@class,'fsw_inputBox dates inactiveWidget')]"));
+	    
+	    //FromDate.click();
+	    
+	    String textFromDate=Departure.getText();
+	    
+	    System.out.println("Text in From Date Field is :" +textFromDate);
+		
+		Thread.sleep(4000);
+		
+		WebElement Return= rm.findElement(By.xpath("//*[contains(@data-cy,'returnArea')]"));
+		
+		//Return.click();
+		
+		String textReturn= Return.getText();
+		
+		System.out.println("Text in To Date Field is :" +textReturn);
+		
+		TakesScreenshot tk=(TakesScreenshot)rm;
+		
+		File src=tk.getScreenshotAs(OutputType.FILE);
+		
+		try {
+			FileUtils.copyFile(src, new File("C://Users//Yogesh//eclipse-workspace//TDD//Screenshot//DatePickerScreenshot.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	@Test
+	public void tc3()
+	{
+		WebElement FromDate=rm.findElement(By.xpath("//*[contains(@id,'datepicker1')]"));
+	
+		FromDate.click();
+		
+		
+		
+		
+	}
+	
 	
 	
 	@AfterMethod
