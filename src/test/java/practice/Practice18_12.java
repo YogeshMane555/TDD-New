@@ -1,5 +1,6 @@
 package practice;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -62,6 +63,20 @@ public class Practice18_12 {
 		System.out.println("Is Radio button 1 selected :" +b);	
 		
 		Thread.sleep(4000);
+		
+		String Text=radio.getText();
+		
+		System.out.println("Value of Radio button 1 :" +Text);
+		
+		org.openqa.selenium.Dimension d=radio.getSize();
+		
+		int height=d.height;
+		
+		int width=d.width;
+		
+		System.out.println("Heigh of WebElement :"+height);
+		
+		System.out.println("Width of WebElement :"+width);
 		
 		TakesScreenshot tk=(TakesScreenshot)rm;
 		
