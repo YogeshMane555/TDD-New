@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -90,6 +92,73 @@ public class Practice18_12 {
 		}
 	}
 	
+	@Test
+	public void tc2() throws InterruptedException
+	{
+		WebElement textbox=rm.findElement(By.xpath("//*[contains(@id,'autocomplete')]"));
+		
+		textbox.sendKeys("Ar");
+		
+		Thread.sleep(4000);
+		
+		List<WebElement> autolist= rm.findElements(By.xpath("//*[contains(@class,'ui-menu-item')]"));
+		
+		int totalNumberOfList=autolist.size();
+		
+		Thread.sleep(4000);
+		
+		System.out.println("Total Number of AutoSuggestion list are :" +totalNumberOfList);
+		
+		Thread.sleep(4000);
+		
+		TakesScreenshot tk=(TakesScreenshot)rm;
+		
+		File src=tk.getScreenshotAs(OutputType.FILE);
+		
+		try {
+			FileUtils.copyFile(src, new File("C://Users//Yogesh//eclipse-workspace//TDD//Screenshot//P18_12AutoSuggestion.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(WebElement lists:autolist)
+		{
+			String AutoSuggestionList=lists.getText();
+			
+			System.out.println("AutoSuggestions are as follows :" +AutoSuggestionList);
+			
+			if(AutoSuggestionList.equalsIgnoreCase("Aruba"))
+			{
+				lists.click();
+			
+			}
+			
+		}
+	}
+	
+	@Test
+	public void tc3() throws InterruptedException
+	{
+		WebElement drp= rm.findElement(By.xpath("//*[contains(@id,'dropdown-class-example')]"));
+		
+		Select s=new Select(drp);
+		
+		s.selectByVisibleText("Option1");
+		
+		Thread.sleep(4000);
+		
+		TakesScreenshot tk=(TakesScreenshot)rm;
+		
+		File src=tk.getScreenshotAs(OutputType.FILE);
+		
+		try {
+			FileUtils.copyFile(src, new File("C://Users//Yogesh//eclipse-workspace//TDD//Screenshot//P18_12DropDown.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	@AfterMethod
 	public void tearDown()
