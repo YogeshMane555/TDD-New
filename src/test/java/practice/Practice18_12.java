@@ -158,6 +158,30 @@ public class Practice18_12 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		org.openqa.selenium.Point p=drp.getLocation();
+		
+		int heightfromTop=p.x;
+		
+		int LefttoRight= p.y;
+		
+		System.out.println("Locatio from top to bottom :" +heightfromTop); 
+		
+		System.out.println("Location from Left to Right :" +LefttoRight);
+		
+		org.openqa.selenium.Dimension d=drp.getSize();
+		
+		int height=d.height;
+		
+		int width=d.width;
+		
+		System.out.println("Height of Element is :" +height);
+		
+		System.out.println("Width of Element is :" +width);
+		
+		Boolean b=drp.isDisplayed();
+		
+		System.out.println("Is DropDown visible :" +b);
 	}
 	
 	@AfterMethod
