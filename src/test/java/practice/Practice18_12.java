@@ -39,6 +39,21 @@ public class Practice18_12 {
 	}
 	
 	@Test
+	public void tc()
+	{
+	  String TitleOfWebPage=rm.getTitle();
+	  
+	  System.out.println("Title of WebPage is :"+TitleOfWebPage);
+	  
+	  String CurrentUrl=rm.getCurrentUrl();
+	  
+	  System.out.println("Current URL of WebPage is :"+CurrentUrl);
+	  
+	  System.out.println(rm.getPageSource());
+	
+	}
+	
+	@Test
 	public void tc1() throws InterruptedException
 	{
 		
