@@ -200,6 +200,52 @@ public class Practice18_12 {
 
 		System.out.println("Is DropDown visible :" + b);
 	}
+	
+	@Test
+	public void tc4() throws InterruptedException
+	{
+		WebElement Checkbox=rm.findElement(By.xpath("//*[contains(@id,'checkBoxOption1')]"));
+	
+		Checkbox.click();
+		
+		Thread.sleep(4000);
+		
+		Boolean b=Checkbox.isSelected();
+		
+		System.out.println("Is Checkbox 1 got selected ?:"+b);
+		
+		org.openqa.selenium.Dimension d=Checkbox.getSize();
+		
+		int height=d.height;
+		
+		int width=d.width;
+		
+		System.out.println("Height of Checkbox is :"+height);
+		
+		System.out.println("Width of Checkbox is :"+width); 
+		
+		org.openqa.selenium.Point p=Checkbox.getLocation();
+		
+		int topToBottom=p.x;
+		
+		int LeftToRight=p.y;
+		
+		System.out.println("Top to bottom :" +topToBottom);
+		
+		System.out.println("Left to Right :" +LeftToRight);
+		
+		TakesScreenshot tk=(TakesScreenshot)rm;
+		
+		File src=tk.getScreenshotAs(OutputType.FILE);
+		
+		try {
+			FileUtils.copyFile(src, new File("C:\\Users\\Yogesh\\eclipse-workspace\\TDD\\Screenshot\\P18_12CheckBox.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@AfterMethod
 	public void tearDown() {
