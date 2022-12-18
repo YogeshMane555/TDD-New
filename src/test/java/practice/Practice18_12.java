@@ -27,7 +27,7 @@ public class Practice18_12 {
 		
 		co.addArguments("incognito");
 		
-		co.addArguments("start-maximizing");
+		co.addArguments("start-maximized");
 		
 		rm=new ChromeDriver(co);
 		
